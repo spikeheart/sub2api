@@ -17,8 +17,8 @@ git checkout main
 git pull --ff-only origin main
 
 cd "$APP_DIR/deploy"
-SUB2API_COMMIT=$(git -C "$APP_DIR" rev-parse --short HEAD)
-export SUB2API_COMMIT
+SUB2API_IMAGE=${SUB2API_IMAGE:-ghcr.io/spikeheart/sub2api:latest}
+export SUB2API_IMAGE
 
 docker compose "${COMPOSE_FILES[@]}" pull sub2api postgres redis
 docker compose "${COMPOSE_FILES[@]}" up -d
