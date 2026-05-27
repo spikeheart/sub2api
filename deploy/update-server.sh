@@ -20,7 +20,6 @@ cd "$APP_DIR/deploy"
 SUB2API_COMMIT=$(git -C "$APP_DIR" rev-parse --short HEAD)
 export SUB2API_COMMIT
 
-docker compose "${COMPOSE_FILES[@]}" pull postgres redis
-docker compose "${COMPOSE_FILES[@]}" build sub2api
+docker compose "${COMPOSE_FILES[@]}" pull sub2api postgres redis
 docker compose "${COMPOSE_FILES[@]}" up -d
 docker compose "${COMPOSE_FILES[@]}" ps
